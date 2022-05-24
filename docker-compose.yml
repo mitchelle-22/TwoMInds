@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  backend:
+    build: ./Server
+    container_name: Server
+    image: registry.thedigitalacademy.co.za/fs/unstoppable-api:0.0.1
+    ports:
+      - '4308:4308'
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    image: registry.thedigitalacademy.co.za/fs/unstoppable:0.0.1
+    ports:
+      - '4307:4307'
+
+# to run the dockercompose:
+# docker-compose up --build -d
+
+    

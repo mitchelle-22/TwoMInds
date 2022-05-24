@@ -1,0 +1,211 @@
+<!--  -->
+<div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+<div class="w-full h-[100%] flex">
+    <!-- sidebar -->
+    <div *ngIf="showSidebar">
+      <app-admin-side-nav></app-admin-side-nav>
+    </div>
+    <!-- sidebar end -->
+
+    <div class="flex-1">
+        <!-- header start -->
+      <div class="w-full flex justify-end items-center h-16 bg-grey pr-4 py-4">
+
+        <div class="h-full">
+          <h1 class="text-2xl font-light ml-auto flex">
+            {{ name }}
+          </h1>
+
+        </div>
+      </div>
+       <!-- header end -->
+
+       <div class="w-100 fullHight p-6 overflow-scroll">
+        <div class="lg:grid grid-cols-1 gap-4">
+          <div class="block p-8 bg-grey m-4 rounded-lg col-span-2">
+            <div class="flex justify-between items-center">
+              <h1 class="text-xl font-bold">Recommendations for activities</h1>
+              <div class="flex justify-center">
+                <div class="input-group relative w-60 rounded">
+                  <span
+                    class="input-group-text flex items-center px-1 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap bg-white rounded"
+                    id="basic-addon2"
+                  >
+                    <img src="../../../../assets/icons/search.svg" />
+                  </span>
+                  <input
+                    type="search"
+                    class="form-control relative flex-auto min-w-0 px-1 py-1.5 text-base font-normal rounded transition ease-in-out m-0"
+                    placeholder="Search by Full Name"
+                    aria-label="Search"
+                    aria-describedby=""
+                    [(ngModel)]="searchText"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col mb-5">
+              <div class="overflow-x-auto sm:-mx-6 ls:-mx-8">
+                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                  <div class="overflow-hidden">
+                    <table class="min-w-full">
+                      <thead class="border-b">
+                        <tr>
+                          <th
+                            scope="col"
+                            class="text-sm font-medium text-gray-900 py-4 text-left"
+                          >
+                            ID
+                          </th>
+                          <th
+                            scope="col"
+                            class="text-sm font-medium text-gray-900 py-4 text-left"
+                          >
+                            NAME
+                          </th>
+                          <th
+                            scope="col"
+                            class="text-sm font-medium text-gray-900 py-4 text-left"
+                          >
+                            EMAIL
+                          </th>
+
+                          <th
+                            scope="col"
+                            class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                          >
+                            RECOMMENDATIONS
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <!-- <tr *ngFor="let c of characters | appFilter: searchText" class="border-b ">
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900"
+                    ></td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900"
+                    ></td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900"
+                    ></td>
+                  </tr> -->
+
+                        <tr
+                          *ngFor="let user of users; let i = index"
+                          class="border-b"
+                        >
+                          <td
+                            class="py-4 ml-1 whitespace-nowrap text-sm font-light text-gray-900"
+                          >
+                            {{ i + 1 }}
+                          </td>
+                          <td
+                            class="py-4 whitespace-nowrap text-sm font-light text-gray-900"
+                          >
+                            {{ user.firstname }}
+                          </td>
+                          <td
+                            class=" py-4 whitespace-nowrap text-sm font-light text-gray-900"
+                          >
+                            {{ user.email }}
+                          </td>
+
+                          <td
+                            class="py-4 whitespace-nowrap text-sm font-light text-gray-900"
+                          >
+                            <label
+                              (click)="activity(user)"
+                              for="my-modal-3"
+                              class="cursor-pointer modal-button hover:bg-green focus:bg-green active:bg-green bg-green w-100% mt-4 mb-4 ml-8 py-1 px-4 text-white"
+                              >Add</label
+                            >
+                            <input
+                              type="checkbox"
+                              id="my-modal-3"
+                              class="modal-toggle"
+                            />
+                            <div class="modal">
+                              <div class="modal-box relative">
+                                <div class="flex justify-between content-center">
+                                  <h3 class="text-2xl text-green">Activities</h3>
+                                  <p>
+                                    <label for="my-modal-3" class="block">✕</label>
+                                  </p>
+                                </div>
+                                <!-- <modal body> -->
+                                <div class="card w-100 bg-base-50">
+                                  <div class="card-body px-0">
+                                    <p><span class="font-bold">Fullname: {{firstname}}</span></p>
+                                    <p>
+                                      <span class="font-bold">Email Address: {{email}}</span>
+                                    </p>
+                                    <p class="font-bold">Activities</p>
+
+                                    <div class="flex flex-col justify-center">
+                                      <div class="flex flex-col">
+                                        <label
+                                          for="accept"
+                                          class="inline-flex items-center mt-3"
+                                          *ngFor="let order of arr; let i = index"
+                                        >
+                                          <input
+                                            type="checkbox"
+                                            id="accept"
+                                            (click)="run1(order)"
+                                            name="accept"
+                                            class="form-checkbox h-5 w-5 text-gray-600"
+                                            value="{{ order.name }}"
+                                          /><span class="ml-2 text-gray-700">{{
+                                            order.name
+                                          }}</span>
+                                        </label>
+                                      </div>
+                                      <button  class="block mx-auto mt-8 bg-green focus:outline-none text-white py-2 px-4 w-40 font-bold" (click)="submit()">Submit</button>
+                                     
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Dashboard card end -->
+    </div>
+</div>
+
+
+<!-- Dashboard card end -->
+
+<!-- </div> -->
+
+<!-- </div> -->
+
+<!--Sidebar menu button-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  (click)="onShowSidebar()"
+  width="46"
+  height="46"
+  fill="#ffffff"
+  class="bi bi-list cursor-pointer fixed top-2 left-2"
+  viewBox="0 0 16 16"
+>
+  <path
+    fill-rule="evenodd"
+    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+  />
+</svg>
+<!-- side menu button end -->

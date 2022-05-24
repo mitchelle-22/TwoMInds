@@ -1,0 +1,6 @@
+.loader{
+    position: fixed;
+    top: 50%;
+    left: 75%;
+    z-index: 88;
+}

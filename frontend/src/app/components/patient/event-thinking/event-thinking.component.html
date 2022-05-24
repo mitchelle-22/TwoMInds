@@ -1,0 +1,90 @@
+
+<div class="  flex inline-flex mx-4 my-4"> 
+    <a (click)="back()" ><img class ="" src= "../../../../assets/icons/back.svg" alt=""></a>
+    <label class="mx-10 font-bold">Journals</label>
+    
+</div>
+  <div class=" mt-8 p-6 flex items-center">   
+      <h2 style="color: #4BC7C1; font-size: large;"><strong>Recent Entries</strong></h2>
+  </div>
+    
+    <div  *ngIf="flag" class=" flex justify-center items-center ">
+      <p>No journal entries</p>
+    </div>
+<div class="max-w-full rounded overflow-hidden ">
+ 
+  <div class="px-6 pt-4 pb-2" *ngFor="let journal of Journal" >
+    <div class=" bg-grey rounded px-3 py-1 text-sm font-semibold text-gray-400 mr-4 mb-2" (click)="run(journal.id)">{{journal.date}}
+      <br>
+    <p class="text-sm font-semibold mt-3 text-gray-700">{{journal.title}}</p>
+  </div>
+
+   
+  </div>
+
+ 
+       
+  <!-- <div class="flex justify-end pl-20 mx-auto px-3 py-1"><img src="../../../../assets/icons/notes.svg" alt=""></div> add icon -->
+
+
+  
+
+
+  <!-- ****** -->
+
+  <div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+    <input type="checkbox" id="my-modal-3" class="modal-toggle">
+ <div class="modal">
+   <div class="modal-box relative">
+     <label for="my-modal-3" class="mr-3 absolute right-2 top-2">✕</label>
+     <h3 class="text-lg font-bold">Journal</h3>
+    <!-- <modal body> -->
+    <div class="card w-100 bg-base-50 mt-3 rounded-lg ">
+     <div class="card-body px-0 bg-teal ">
+      
+      <form [formGroup]="dairyForm"
+(ngSubmit)="onSubmit()" class="w-full px-6 py-6 ">
+
+  <div class="pb-6 ">
+    <label class=" md:text-right mb-1 pr-4" for="inline-full-name">
+      Title
+    </label>
+  </div>
+
+  <div class="w-full pb-6" >
+    <input formControlName="title" class="bg-grey appearance-none border-2 border-gray-200 rounded w-full block py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="inline-title" type="text" placeholder="Add a title to this entry...">
+  </div>
+
+  <div class="pb-3 ">
+    <label class=" md:text mb-1 pr-4" for="inline-full-name">
+      Story
+    </label>
+  </div>
+
+  <div class="w-full pb-4" >
+    <input formControlName="story" class=" bg-grey appearance-none border-2 border-gray-200 rounded w-full block py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="inline-title" type="text" placeholder="Write something...">
+  </div>
+
+      <div class=" absolute bottom-0 right-6 mb-4 mt-4">
+       
+        <button class=" bg-green  focus:outline-none text-white py-2 px-4 w-40 font-bold" type="submit">
+          Submit
+        </button>
+    
+      </div>
+
+  </form>
+
+     </div>
+    </div>
+
+   </div>
+ </div>
+ 
+</div>
+
+<div class=" fixed bottom-0 right-6 mb-4">
+
+<label for="my-modal-3" class="cursor-pointer modal-button  w-100% mt-4 mb-4 ml-8 py-1 px-4 text-white flex justify-end pl-20 mx-auto" ><img src="../../../../assets/icons/notes.svg" alt=""></label>
+
+</div>

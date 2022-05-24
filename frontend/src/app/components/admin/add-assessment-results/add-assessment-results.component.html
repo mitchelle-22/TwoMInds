@@ -1,0 +1,74 @@
+<div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+
+
+<div class="flex align-center mt-5 mb-6">
+    <p (click)="back()"><img class ="" src= "../../../../assets/icons/back_arrow.svg" alt=""></p>
+      <div class="text-xl pl-2 mt-[-2px]">
+        Review Assessment
+      </div> 
+ </div>
+
+<p *ngIf="assessments.length == 0" class="px-3">
+	No assessments to rate.
+</p>
+<div
+  *ngFor="let assessment of assessments; let i = index"
+  class="card w-100 bg-base-50 mt-2 rounded-lg px-2 mb-14"
+>
+  <div class="font-medium mb-2">Assessment Level {{ i + 1 }}</div>
+
+  <div class="flex gap-8">
+    <div class="assessment_container flex-1">
+      <div *ngFor="let x of [1, 2, 3, 4]" class="card-body px-0 py-0 bg-teal">
+        <div tabindex="3" class="collapse collapse-arrow">
+          <div class="collapse-title">Assessment {{ x }}</div>
+          <div class="collapse-content border border-grey">
+            <h2 class="font-bold">Question</h2>
+            <p>{{ question[i].Question[x] }}</p>
+
+            <h2 class="font-bold">Answer</h2>
+            <p>{{ assessment.answer[x] }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	<div class=" flex-1">
+		<form [formGroup]="resultsForm" (ngSubmit)="onSubmit(assessment)">
+
+				<div class="flex mt-2 w-full">
+						<p class="mr-4 mb-0 font-bold">Status</p>
+						<input formControlName="status"  
+						class="form-control w-full px-2 py-1 bg-grey border border-solid border-gray-300 rounded focus:text-gray-700 focus:bg-white focus:border-green focus:outline-none "
+						id="exampleFormControlTextarea1" rows="2"
+						placeholder="Write your question" id="inline-title" type="text" placeholder="Write something...">
+				</div>
+
+
+				<div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+
+				<div class="pb-3 ">
+					<label class=" md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+						Feedback
+					</label>
+				</div>
+			
+				<div class="w-full pb-4" >
+					<input formControlName="feedback" class="bg-grey appearance-none border-2 border-gray-200 rounded w-full block py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="inline-title" type="text" placeholder="Write something...">
+				</div>
+
+				<div class="flex mt-2 w-full">
+						<p class="mr-4 mb-0 font-bold">Rate</p>
+						<input 
+					formControlName="rate" 
+						class="bg-grey form-control w-full px-2 py-1 border border-solid border-gray-300 rounded focus:text-gray-700 focus:bg-white focus:border-green focus:outline-none "
+						id="exampleFormControlTextarea1" rows="2"
+						placeholder="Write your question" id="inline-title" type="number" placeholder="Write something...">
+				</div>
+				
+			<button type="submit" class="block bg-green px-8 py-2 mt-8 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-green-400 border border-transparent rounded-small">Submit</button>
+		</form>
+    </div>
+	
+</div>
+</div>

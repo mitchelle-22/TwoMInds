@@ -1,0 +1,55 @@
+<label for="my-modal-3" class="cursor-pointer modal-button hover:bg-green focus:bg-green active:bg-green bg-green w-100% mt-4 mb-4 ml-8 py-1 px-4 text-white" data-bs-toggle="modal" data-bs-target="#addBookingModal">Add booking</label>
+<input type="checkbox" id="my-modal-3" class="modal-toggle">
+<div class="modal" id="addBookingModal">
+    <div class="modal-box relative">
+      <label for="my-modal-3" class="mr-3 absolute right-2 top-2">✕</label>
+      <h3 class="text-lg font-bold">Patient Evaluation</h3>
+     <!-- <modal body> -->
+     <div class="card w-100 bg-base-50 mt-3 rounded-lg ">
+      <div class="card-body px-0 bg-teal ">
+         <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+
+           <div class="pb-3 ">
+             <label class=" md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+               date
+             </label>
+           </div>
+         
+           <div class="w-full pb-4" >
+             <input formControlName="date" class="bg-grey appearance-none border-2 border-gray-200 rounded w-full block py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="inline-title" type="text" placeholder="Write something...">
+           </div>
+
+
+           <div class="pb-3 ">
+             <label class=" md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                time
+             </label>
+           </div>
+         
+           <div class="w-full pb-4" >
+             <input formControlName="time" class="bg-grey appearance-none border-2 border-gray-200 rounded w-full block py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="inline-title" type="text" placeholder="Write something...">
+           </div>
+
+           <div class="pb-3 ">
+             <label class=" md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                notes
+             </label>
+           </div>
+         
+           <div class="w-full pb-4" >
+             <input formControlName="notes" class="bg-grey appearance-none border-2 border-gray-200 rounded w-full block py-2 px-4  p-6 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="inline-title" type="text" placeholder="Write something...">
+           </div>
+
+           <button type="submit" class="btn bg-green">Submit</button>
+         </form>
+
+      </div>
+     </div>
+
+    </div>
+  </div>
+
+
+
+
+  

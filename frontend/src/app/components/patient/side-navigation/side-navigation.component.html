@@ -1,0 +1,45 @@
+<!--Sidebar menu button-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+(click)="onShowSidebar()"
+width="46"
+height="46"
+fill="#4BC7C1"
+class="bi bi-list cursor-pointer fixed top-2 left-2"
+viewBox="0 0 16 16"
+>
+<path
+  fill-rule="evenodd"
+  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+/>
+</svg>
+<!-- side menu button end -->
+<div *ngIf="showSidebar">
+<div class="drawer-side  absolute rounded forz" >
+      <label for="drawer-side" class="drawer-overlay"></label>
+      <div class="menu p-4 overflow-y-auto h-screen bg-green w-80 text-neutral-content ">
+
+        <div (click)="onShowSidebar()" class="flex justify-end text-white cursor-pointer">
+          X
+        </div>
+        <div class=" menu avatar pt-8 mt-11 ">
+          <div class="w-24 rounded mx-auto p-2 ">
+            <img src="assets/icons/profile-picture.svg" />
+          </div>
+
+          <h2 class="font-bold text-center"> {{email}}</h2>
+        </div>
+
+        <ul class="pt-8">
+
+          <li ><a class="hover:bg-green focus:bg-green  active:bg-green" routerLink="/home-page" ><img src="assets/icons/home.svg" alt="">Home</a></li>
+          <li><a class="hover:bg-green focus:bg-green  active:bg-green" routerLink="/profile"><img src="assets/icons/profile.svg" alt="">Profile</a></li>
+          <li><a class="hover:bg-green focus:bg-green  active:bg-green" routerLink="/faq"><img src="assets/icons/FAQ.svg" alt="">FAQ</a></li>
+          <li><a (click)="logout()" class="hover:bg-green focus:bg-green  active:bg-green"><img src="assets/icons/logout.svg" alt="">Logout</a></li>
+        </ul>
+
+        <a href=""></a>
+      </div>
+</div>
+</div>
+

@@ -1,0 +1,48 @@
+
+<div class="w-80 h-screen bg-green text-white">
+  <div class="w-100 bg-teal-400 h-16"></div>
+  <p class="my-auto mt-6 mb-10 text-white text-3xl ml-6">TwoMinds</p>
+  <ul class="menu p-4 overflow-y-auto w-80 text-white text-base-content">
+    <li>
+      <a [routerLink]="['/admin-dashboard']" routerLinkActive="active"  class="text-white">
+        <img src="assets/icons/dashboard.svg" alt=""/>Dashboard</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/user']" routerLinkActive="active" class="text-white"
+        ><img src="assets/icons/users.svg" alt="" />Users</a
+      >
+    </li>
+    <li>
+      <a routerLinkActive="active"  [routerLink]="['/therapist-assessment-review']" class="text-white pl-20-"
+        ><img src="assets/icons/assessment_admin.svg" alt="" /> Assessments </a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/admin-bookings']" class="text-white" routerLinkActive="active"
+        ><img src="assets/icons/bookings.svg" alt="" />Bookings</a
+      >
+    </li>
+    <li>
+
+      <a [routerLink]="['/recommendation']" class="text-white" routerLinkActive="active"
+        ><img src="assets/icons/resultsv2.svg" alt="" />Recommendations</a
+      >
+
+    </li>
+    <li>
+
+      <a [routerLink]="['/admin-activities']" class="text-white" routerLinkActive="active"
+        ><img src="assets/icons/eventsv2.svg" alt="" />Activities</a
+      >
+
+    </li>
+    <li>
+
+      <a [routerLink]="['/list']" class="text-white" routerLinkActive="active"
+        ><img src="assets/icons/diary.svg" alt="" />Journal</a
+      >
+
+    </li>
+  </ul>
+</div>

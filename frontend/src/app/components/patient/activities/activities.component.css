@@ -1,0 +1,8 @@
+img{
+    display: block;
+    width: fit-content;
+    /* padding: initial; */
+    margin: auto;
+    padding-top: initial;
+    padding-bottom: initial;
+}

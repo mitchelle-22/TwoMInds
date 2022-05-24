@@ -1,0 +1,268 @@
+<div class="w-full h-[100%] flex">
+    <!-- sidebar -->
+    <div *ngIf="showSidebar">
+      <app-admin-side-nav></app-admin-side-nav>
+    </div>
+    <!-- sidebar end -->
+   
+  
+  
+    <div class="flex-1">
+  
+      <!-- header start -->
+      <div class="w-full flex justify-end items-center h-16 bg-grey pr-4 py-4">
+        <div class="w-80 h-full">
+           
+         
+        
+         
+        </div>
+      </div>
+       <!-- header end -->
+  
+        <!-- Dashboard card start -->
+       <div class="w-100 fullHight p-6 overflow-scroll">
+        <div class="w-100 h-[810px] bg-grey rounded-xl overflow-scroll p-8">
+          <div class="ml-auto flex">
+            <h1 class="text-xl font-bold">Jounal info {{res.date}}</h1>
+           
+          </div> 
+  
+          <div class="lg:grid grid-cols-3 gap-4 ">
+            <div
+              class="block pl-2 pr-2 pt-2 pb-2 bg-white mt-10 rounded-lg col-span-2"
+            >
+
+              <div class="bookings-header p-2 text-xl">
+                <h1>{{res.title}}</h1>
+              </div>
+              <div class="flex flex-col mb-5">
+                <div class="overflow-x-auto sm:-mx-6 ls:-mx-8">
+                  <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="overflow-hidden mt-">
+                    <!-- notes -->
+                    <p>{{res.description}}</p>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="w-auto mt-10 bg-white rounded-lg"  >
+             
+             <img src="assets/images/image1.png" alt="">
+             
+
+            </div>
+           
+          </div>
+
+          <div class="ml-auto flex mt-10">
+            <h1 class="text-xl font-bold"></h1>
+            <label for="back" class="cursor-pointer modal-button hover:bg-green focus:bg-green active:bg-green bg-green w-100% mt-4 mb-4  p-3 text-white mr-auto flex" (click)="back()">Back</label>
+            <label for="my-modal-3" class="cursor-pointer modal-button hover:bg-green focus:bg-green active:bg-green bg-green w-100% mt-4 mb-4  p-3 text-white ml-auto flex">Booking slot</label>
+            
+           
+
+           
+
+
+            <!-- <input type="checkbox" id="my-modal-3" class="modal-toggle">
+                        <div class="modal">
+                          <div class="modal-box relative">
+                            <label for="my-modal-3" class="mr-3 absolute right-2 top-2">✕</label>
+                            <h3 class="text-lg font-bold">Assessment Review</h3>
+                          
+                           <div class="card w-100 bg-base-50 mt-3 rounded-lg ">
+                            <div class="card-body px-0 bg-teal ">
+                             <div tabindex="3" class="collapse collapse-arrow">
+                              <div class="collapse-title text-xl font-medium">
+                                Assessment 1
+                              </div>
+                              <div class="collapse-content border border-grey">
+                                <h2 class="font-bold">Question</h2>
+
+                                <h2 class="font-bold">Answer</h2>
+
+                              </div>
+                            </div>
+                            <div tabindex="0" class="collapse collapse-arrow">
+                              <div class="collapse-title text-xl font-medium">
+                                Assessment 2
+                              </div>
+                              <div class="collapse-content border border-grey ">
+                                <h2 class="font-bold">Question</h2>
+
+                                <h2 class="font-bold">Answer</h2>
+
+                              </div>
+                            </div>
+                            <div tabindex="0" class="collapse collapse-arrow ">
+                              <div class="collapse-title text-xl font-medium">
+                                Assessment 3
+                              </div>
+                              <div class="collapse-content border border-grey ">
+                                <h2 class="font-bold">Question</h2>
+
+                                <h2 class="font-bold">Answer</h2>
+
+                              </div>
+                            </div>
+                            <div tabindex="0" class="collapse collapse-arrow ">
+                              <div class="collapse-title text-xl font-medium">
+                                Assessment 4
+                              </div>
+                              <div class="collapse-content border border-grey ">
+                                <h2 class="font-bold">Question</h2>
+
+                                <h2 class="font-bold">Answer</h2>
+
+                              </div>
+                            </div>
+
+                            <div tabindex="0" class="collapse collapse-arrow ">
+                              <div class="collapse-title text-xl font-medium">
+                                Assessment 5
+                              </div>
+                              <div class="collapse-content">
+                                <h2 class="font-bold">Question</h2>
+
+                                <h2 class="font-bold">Answer</h2>
+
+                              </div>
+                            </div>
+
+
+
+                            </div>
+                           </div>
+
+                          </div>
+                        </div> -->
+
+                        <input type="checkbox" id="my-modal-3" class="modal-toggle">
+                        <div class="modal" id="addBookingModal">
+                            <div class="modal-box relative">
+                              <label for="my-modal-3" class="mr-3 absolute right-2 top-2">✕</label>
+                              <h3 class="text-lg font-bold">Session booking</h3>
+                             <!-- <modal body> -->
+                             <div class="card w-100 bg-base-50 mt-3 rounded-lg ">
+                              <div class="card-body p-4 bg-teal ">
+                                 <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+                        
+                                   <div class="pb-3 ">
+                                     <label for="datePicker">Date</label>
+                                     <input type="date" formControlName="date" name="datePicker" id="datePicker">
+
+                                   </div>
+                                             
+                                   <div class="pb-3 ">
+                                     <label class="" for="inline-full-name">
+                                        time
+                                     </label>
+                      
+                                             <!--Select role-->
+                                    <div class="flex justify-center">
+                                      <div class=" w-full">
+                                        <select formControlName="time" class="form-select
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          
+                                          bg-clip-padding bg-no-repeat
+                                          border-2 border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-cust-green focus:outline-none" aria-label="Default select example">
+                                          <option class="font-normal " value="null" disabled="true" [selected]="true" >Select time</option>
+
+                                          <option *ngFor="let mytime of time" [ngValue]="mytime">
+                                            {{mytime}}
+                                          </option>
+                                        </select>
+                                      </div>
+                                  </div>
+
+                                     
+                      </div>
+                                   
+
+
+                        
+                                   
+                        
+                                   <div class="pb-3 ">
+                                     <label class="" for="inline-full-name">
+                                        notes
+                                     </label>
+                                     <input formControlName="notes" class="bg-grey appearance-none border-2 border-gray-200 rounded w-full block py-2 px-4  p-6 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="inline-title" type="textarea" placeholder="Write something...">
+                                   </div>
+                                 
+
+                                   <div class=" absolute bottom-0 right-6 mb-4 mt-4">
+       
+                                    <button class=" bg-green  focus:outline-none text-white py-2 px-4 w-40 font-bold" type="submit">
+                                      Submit
+                                    </button>
+                                
+                                  </div>
+                                  
+                                 </form>
+                        
+                              </div>
+                             </div>
+                        
+                            </div>
+                          </div>
+                        
+                        
+                        
+                        
+                          
+           
+          </div> 
+  
+        </div>
+      </div> 
+      <!-- Dashboard card end -->
+  
+    </div>
+  
+  </div>
+  
+
+
+  <!--Sidebar menu button-->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    (click)="onShowSidebar()"
+    width="46"
+    height="46"
+    fill="#ffffff"
+    class="bi bi-list cursor-pointer fixed top-2 left-2"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+    />
+  </svg>
+  <!-- side menu button end -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+   

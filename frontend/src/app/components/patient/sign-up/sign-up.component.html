@@ -1,0 +1,133 @@
+<div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+<div class="min-h-screen flex items-center justify-center">
+<div class="">
+
+  <img class = " mx-auto mt-5" src="../../../../assets/icons/person.svg" alt=""/>
+  <p class="text-center text-xl mt-1">Sign Up</p>
+  <p class="text-red-500 mt-2 mb-[-1rem]">{{errorMessage}}</p>
+  <form
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSubmit()"
+    class="mx-auto w-[18rem]"
+
+  >
+  <!--FullName-->
+    <div class="flex items-center border-b border-teal-500 py-0 mt-5">
+      <img src="../../../../assets/icons/fullName.svg" alt="" />
+      <input
+        formControlName="fullname"
+        class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+        type="text"
+        placeholder="Full name"
+        aria-label="Full name"
+      />
+    </div>
+    <div
+      class="text-red-500"
+      *ngIf="fullname?.invalid && (fullname?.dirty || fullname?.touched)"
+    >
+      <small *ngIf="fullname?.errors?.['required']">
+        *Fullname is required</small
+      >
+      <small  *ngIf="fullname?.errors?.['pattern']">*Fullname  must be letters only</small>
+    </div>
+
+<!--Gender-->
+    <p class="mt-8 ">Gender</p>
+
+    <div>
+      <input type="radio" class="myInput " id="contactChoice1"
+       name="contact" value="male" checked>
+      <label  for="contactChoice1">Male</label>
+
+      <input type="radio" class="myInput" id="contactChoice2"
+       name="contact" value="female">
+      <label for="contactChoice2">Female</label>
+
+
+    </div>
+
+
+    <!--email-->
+    <div class="flex items-center mt-8 border-b border-teal-500 py-0">
+      <img src="../../assets/icons/email.svg" alt="" />
+      <input
+        formControlName="email"
+        class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+        type="text"
+        placeholder="Email"
+      />
+    </div>
+    <div
+      class="text-red-500"
+      *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+    >
+      <small *ngIf="email?.errors?.['required']"> *Email is required</small>
+      <small *ngIf="email?.errors?.['email']"> *Invalid email</small>
+    </div>
+    <!--password-->
+    <div class="flex items-center mt-8 border-b border-teal-500 py-0">
+      <img src="../../../../assets/icons/password.svg" alt="" />
+      <input
+        formControlName="password"
+        class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+        type="password"
+        placeholder="Password"
+      />
+    </div>
+    <div
+      class="text-red-500"
+      *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+    >
+      <small *ngIf="password?.errors?.['required']"
+        >*Password is required</small
+      >
+    </div>
+
+    <div class="flex items-center mt-8 border-b border-teal-500 py-0">
+      <img src="../../../../assets/icons/password.svg" alt="" />
+      <input
+        formControlName="confirmPassword"
+        class="appearance-none bg-transparent border-none w-full text-gray-7 mr-3 py-1 px-2 leading-tight focus:outline-none"
+        type="password"
+        placeholder="Confirm Password"
+      />
+    </div>
+    <div
+      class="text-red-500"
+      *ngIf="
+        confirmPassword?.invalid &&
+        (confirmPassword?.dirty || confirmPassword?.touched)
+      "
+    >
+      <small *ngIf="confirmPassword?.errors?.['required']"
+        >*Password is required</small
+      >
+    </div>
+    <!--sign up-->
+    <button
+      class="block bg-green mx-auto px-4 py-2 mt-8 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-green-400 border border-transparent rounded-small"
+      type="submit"
+      [disabled]="!signUpForm.valid"
+      [ngClass]="signUpForm.valid ? 'bg-green' : 'bg-disabledGreen' "
+    >
+      Create Account
+    </button>
+
+
+    <div class="my-6 text-center">
+      <p class="text-sm">
+        Already have an account?
+        <a routerLink="/signin" class="text-green hover:underline"> Sign in.</a>
+      </p>
+    </div>
+  </form>
+</div>
+
+</div>
+
+
+
+
+
+

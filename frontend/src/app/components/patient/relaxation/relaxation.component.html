@@ -1,0 +1,38 @@
+<div class="md:container md:mx-auto bg-white">
+    <header class='flex items-center px-4 py-2 bg-white-100'>
+      <a [routerLink]="['/activities']">
+        <img src="../../../../assets/icons/back-button.svg">
+    </a>
+
+        <strong class='mx-auto'>Relaxation</strong>
+      </header>
+      <div *ngFor="let events of activity" class="flex items-center px-4 py-2">
+          <img src="{{activity.img}}">
+      </div>
+      <div>
+          <h2 class="text-black font-bold ml-5">Exercises</h2>
+          <div class="flex flex-col w-full">
+          <p class="pt-1 ml-5">{{activity.Description}}</p>
+          <div class="flex items-center px-4 py-2">
+            <!-- <p class="ml-5">12 min</p>
+            <img src="../../../../assets/icons/audio.svg"> -->
+            <!-- <a href="https://www.youtube.com/watch?v=vNwYtllyt3Q&t=10s&ab_channel=MethadoneMethadone" class="outline outline-offset-2 outline-green pl-2">Press to play  sound file</a> -->
+            {{activity.audio}}
+          </div>
+          <div class="divider mt-1rem"></div>
+
+            <p class="ml-5">{{activity.Description}}</p>
+            <div class="flex items-center px-4 py-2">
+              <!-- <a href="https://www.youtube.com/watch?v=-8N9UR6OTCs&ab_channel=DhyaanGuruDr.NipunAggarwal" class="outline outline-offset-2 outline-green pl-2">Press to play  sound file</a> -->
+              {{activity.audio}}
+            </div>
+
+            </div>
+
+      </div>
+</div>
+
+<!-- <p>{{activity.name}}</p>
+<p>{{activity.Description}}</p>
+<p>{{activity.audio}}</p>
+<img src="{{activity.img}}"/> -->

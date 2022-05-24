@@ -1,0 +1,31 @@
+<div class="md:container md:mx-auto bg-white">
+    <header class='flex items-center px-4 py-2 bg-white-100'>
+        <a [routerLink]="['/home-page']">
+            <img src="../../../../assets/icons/back-button.svg">
+        </a>
+        <div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+        <strong class='mx-auto ml-5'>Activities</strong>
+      </header>
+
+      <div  *ngIf="flag" class="bg-gray flex justify-center items-center ">
+        <p>No activities suggested..</p>
+      </div>
+    <div class="grid grid-rows-4 grid-flow-col gap-4 ">
+    <div class="pt-4" *ngFor="let activity of list">
+
+        <div class="card w-50 h-60 bg-gray text-primary-content ml-1 mr-1 cursor-pointer" (click)="run(activity.id)">
+
+            <div class="card-body">
+              <img src="../../../../assets/icons/{{activity.name}}.svg">
+              <div class="card-actions justify-start">
+
+                <h2 class="card-title text-black">{{activity.name}}</h2>
+
+              </div>
+            </div>
+
+          </div>
+
+    </div>
+  </div>
+</div>

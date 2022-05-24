@@ -1,0 +1,256 @@
+<div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+<div class="w-full h-[100%] flex">
+  <!-- sidebar -->
+  <div *ngIf="showSidebar">
+    <app-admin-side-nav></app-admin-side-nav>
+  </div>
+  <!-- sidebar end -->
+
+
+
+  <div class="flex-1">
+
+    <!-- header start -->
+    <div class="w-full flex justify-end items-center h-16 bg-grey pr-4 py-4">
+
+      <div class="h-full">
+
+        <!-- <h1 class="text-2xl font-light ml-auto flex">
+          {{ name }}
+        </h1> -->
+        <div class="dropdown dropdown-end ml-auto flex-end px-4">
+          <div tabindex="0" class="cursor-pointer ml-1 flex text-2xl font-light">
+            {{name}}
+              <img src="assets/icons/dropdown.svg" class="pl-2 pt-1" alt="">
+          </div>    
+          <ul tabindex="0" class="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4 text-black">
+            <li><a routerLink="../profile">Profile</a></li> 
+            <li><a (click)="logout()" >Logout</a></li>
+          </ul>  
+      
+      </div>
+
+      </div>
+    </div>
+     <!-- header end -->
+
+      <!-- Dashboard card start -->
+     <div class="w-100 fullHight p-6 overflow-scroll">
+      <div class="w-100 h-[810px] bg-grey rounded-xl overflow-scroll p-8">
+        <div>
+          <h1 class="text-xl font-bold">Dashboard</h1>
+        </div>
+
+        <div class="lg:grid grid-cols-3 gap-8 mt-10">
+          <a  routerLink="/admin-bookings" class="p-2 bg-gray rounded-lg grid grid-cols-3 mt-4">
+            <img
+              src="../../../../assets/icons/admin-booking.svg"
+              alt=""
+              class="col-span-1"
+            />
+            <p class="pt-2">
+              Bookings <br />
+              {{ numberOfBookings }}
+            </p>
+          </a>
+
+          <a routerLink="/assessement_question"
+            class="p-2 bg-gray rounded-lg bg-gray rounded-lg grid grid-cols-3 mt-4  cursor-pointer">
+            <img
+              src="../../../../assets/icons/admin_assessment.svg"
+              class="col-span-1 -pt-5"
+              alt=""
+            />
+            <p class="pt-2">
+              Assessments <br />
+              {{ numberOfAssessments }}
+            </p>
+          </a>
+
+          <a  routerLink="/user" class="p-2 bg-gray rounded-lg grid grid-cols-3 mt-4 cursor-pointer">
+            <img
+              src="assets/icons/dash-users.svg"
+              alt=""
+              class="col-span-1 -pt-9"
+            />
+            <p class="pt-2">
+              Users <br />
+              {{ numberOfUsers }}
+            </p>
+          </a>
+        </div>
+
+        <div class="lg:grid grid-cols-3 gap-4 cursor-pointer">
+          <div
+            class="block pl-2 pr-2 pt-2 pb-2 bg-white mt-10 rounded-lg col-span-2"
+          >
+            <div class="bookings-header p-2 font-medium">
+              <p>Bookings</p>
+            </div>
+            <div class="flex flex-col mb-5">
+              <div class="overflow-x-auto sm:-mx-6 ls:-mx-8">
+                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                  <div class="overflow-hidden">
+                    <table class="min-w-full">
+                      <thead class="border-b">
+                        <tr>
+                          <th
+                            scope="col"
+                            class="text-sm font-medium text-gray-900 py-4 text-left"
+                          >
+                           No.
+                          </th>
+                          <th
+                            scope="col"
+                            class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                          >
+                           Firstname
+                          </th>
+                          <th
+                            scope="col"
+                            class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                          >
+                           Email
+                          </th>
+                          <th
+                            scope="col"
+                            class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                          >
+                           Day
+                          </th>
+                          <th
+                            scope="col"
+                            class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                          >
+                           Time
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr *ngFor="let booking of book let i = index"  class="border-b">
+
+                          <td class=" py-4 ml-1 whitespace-nowrap text-sm font-light text-gray-900">
+                            {{i + 1 }}
+                           </td>
+                          <td
+                          class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900"
+                        >{{booking.UserFk.firstname}}
+
+                         </td>
+                         <td
+                         class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900"
+                       >{{booking.UserFk.email}}
+                        </td>
+                        <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900"
+                        >{{booking.date}}
+                      </td>
+                      <td
+                          class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900"
+                        >{{booking.time}}
+                      </td>
+
+                      </tr>
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-auto mt-10 bg-white rounded-lg"  >
+            <div class="px-2 py-2 text-center">{{ displayMonth }} 2022</div>
+            <div class="">
+              <div class="px-4 max-w-lg my-10">
+                <div class="px-2">
+                  <div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+
+                <table class="calendar-table" *ngIf="calendar">
+                  <thead>
+                    <tr>
+                      <th>Mon</th>
+                      <th>Tue</th>
+                      <th>Wed</th>
+                      <th>Thur</th>
+                      <th>Fri</th>
+                      <th>Sat</th>
+                      <th>Sun</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let row of calendar | chunk: 7; let i = index">
+                      <td
+                        class="calendar-day"
+                        [ngClass]="{
+                          'past-date': c.isPastDate,
+                          today: c.isToday
+                        }"
+                        [ngClass]="{
+                          'past-date': c.isPastDate,
+                          today: c.isToday
+                        }"
+                        *ngFor="let c of row; let j = index"
+                      >
+                        <div
+                          class="calendar-day-header"
+                          [ngClass]="{ 'blue-date': c.isToday }"
+                        >
+                          <strong>{{ c.date.getDate() }} </strong>
+                          <strong
+                            *ngIf="
+                              c.isToday ||
+                              (i == 0 && j == 0) ||
+                              c.date.getDate() == 1
+                            "
+                          >
+                          </strong>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Dashboard card end -->
+
+  </div>
+
+</div>
+
+<!--Sidebar menu button-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  (click)="onShowSidebar()"
+  width="46"
+  height="46"
+  fill="#ffffff"
+  class="bi bi-list cursor-pointer fixed top-2 left-2"
+  viewBox="0 0 16 16"
+>
+  <path
+    fill-rule="evenodd"
+    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+  />
+</svg>
+<!-- side menu button end -->
+
+
+
+
+
+
+
+

@@ -1,0 +1,260 @@
+<div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+<div class="w-full h-[100%] flex">
+  <!-- sidebar -->
+  <div *ngIf="showSidebar">
+    <app-admin-side-nav></app-admin-side-nav>
+  </div>
+  <!-- sidebar end -->
+
+  <div class="flex-1">
+     <!-- header start -->
+     <div class="w-full flex justify-end items-center h-16 bg-grey pr-4 py-4">
+      <div class="h-full">
+        <h1 class="text-2xl font-light ml-auto flex">
+      {{name}}
+        </h1>
+      </div>
+    </div>
+    <!-- header end -->
+
+    <div class="block p-8 bg-grey m-8 rounded-lg max-w">
+      <div class="flex justify-between items-center">
+        <h1 class="text-xl font-bold">Assessment Review</h1>
+        <div class="flex justify-center">
+          <div class="input-group relative w-60 rounded">
+            <span
+              class="input-group-text flex items-center px-1 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap bg-white rounded"
+              id="basic-addon2"
+            >
+              <img src="../../../../assets/icons/search.svg" />
+            </span>
+            <input
+              type="search"
+              class="form-control relative flex-auto min-w-0 px-1 py-1.5 text-base font-normal rounded transition ease-in-out m-0"
+              placeholder="Search by Full Name"
+              aria-label="Search"
+              aria-describedby=""
+              [(ngModel)]="searchText"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:grid grid-cols-1 gap-4">
+        <div class="flex flex-col mb-5">
+          <div class="overflow-x-auto sm:-mx-6 ls:-mx-8">
+            <div class="py-2 inline-block min-w-full ">
+              <div class="overflow-hidden sm:px-6 lg:px-8">
+                <table class="min-w-full">
+                  <thead class="border-b">
+                    <tr>
+                      <th
+                        scope="col"
+                        class="text-sm font-medium text-gray-900 py-4 text-left"
+                      >
+                        No.
+                      </th>
+                      <th
+                        scope="col"
+                        class="text-sm font-medium text-gray-900 py-4 text-left"
+                      >
+                        Full Names
+                      </th>
+                      <th
+                        scope="col"
+                        class="text-sm font-medium text-gray-900 py-4 text-left"
+                      >
+                        Email Address
+                      </th>
+                      <th
+                        scope="col"
+                        class="text-sm font-medium text-gray-900  py-4 text-left"
+                      >
+                        Assessment Review
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let user of users;
+                        let i = index
+                      "
+                      class="border-b"
+                    >
+                      <td
+                        class="py-4 ml-1 whitespace-nowrap text-sm font-light text-gray-900"
+                      >
+                        {{ i + 1 }}
+                      </td>
+                      <td
+                        class="py-4 ml-1 whitespace-nowrap text-sm font-light text-gray-900"
+                      >
+                        {{ user.firstname }}
+                      </td>
+                      <td
+                        class="py-4 pr-3 whitespace-nowrap text-sm font-light text-gray-900 text-left"
+                      >
+                        {{ user.email }}
+                      </td>
+                      <td
+                        class="py-4 pr-3 whitespace-nowrap text-sm font-light text-gray-900"
+                      >
+                        <!-- The button to open modal -->
+
+                        <label
+                           routerLink="/rate-assessment/{{user.id}}"
+                          class="cursor-pointer modal-button hover:bg-green focus:bg-green active:bg-green bg-green w-100% mt-4 mb-4 ml-8 py-1 px-4 text-white"
+                          (click)="onView(user.id)"
+                          >View</label
+                        >
+                        <!-- for="my-modal-3" -->
+
+                        <!-- Put this part before </body> -->
+                        <input
+                          type="checkbox"
+                          id="my-modal-3"
+                          class="modal-toggle"
+                        />
+                        <div class="modal">
+                          <div class="modal-box relative">
+                            <label
+                              for="my-modal-3"
+                              class="mr-3 absolute right-2 top-2"
+                              >✕</label
+                            >
+                            <h3 class="text-lg font-bold">Assessment Review</h3>
+                            <!-- <modal body> -->
+                            <div
+
+                              *ngFor="let assessm of assessment; let y = index"
+                              class="card w-100 bg-base-50 mt-3 rounded-lg"
+                            >
+
+                              <div
+                                *ngFor="let x of [1, 2, 3, 4]"
+                                class="card-body px-0 bg-teal"
+                              >
+
+                                <div
+                                  tabindex="3"
+                                  class="collapse collapse-arrow"
+                                >
+                                  <div
+                                    class="collapse-title text-xl font-medium"
+                                  >
+                                    Assessment {{ x }}
+                                  </div>
+                                  <div
+                                    class="collapse-content border border-grey"
+                                  >
+                                    <h2 class="font-bold">Question</h2>
+                                    <p>{{ question[y].Question[x] }}</p>
+
+                                    <h2 class="font-bold">Answer</h2>
+                                    <p>{{ assessm.answer[x] }}</p>
+                                  </div>
+                                </div>
+                                <!-- <div tabindex="0" class="collapse collapse-arrow">
+                              <div class="collapse-title text-xl font-medium">
+                                Assessment 2
+                              </div>
+                              <div class="collapse-content border border-grey ">
+                                <h2 class="font-bold">Question</h2>
+
+                                <h2 class="font-bold">Answer</h2>
+
+                              </div>
+                            </div>
+                            <div tabindex="0" class="collapse collapse-arrow ">
+                              <div class="collapse-title text-xl font-medium">
+                                Assessment 3
+                              </div>
+                              <div class="collapse-content border border-grey ">
+                                <h2 class="font-bold">Question</h2>
+
+                                <h2 class="font-bold">Answer</h2>
+
+                              </div>
+                            </div>
+                            <div tabindex="0" class="collapse collapse-arrow ">
+                              <div class="collapse-title text-xl font-medium">
+                                Assessment 4
+                              </div>
+                              <div class="collapse-content border border-grey ">
+                                <h2 class="font-bold">Question</h2>
+
+                                <h2 class="font-bold">Answer</h2>
+
+                              </div>
+                            </div> -->
+
+                                <!-- <div tabindex="0" class="collapse collapse-arrow ">
+                              <div class="collapse-title text-xl font-medium">
+                                Assessment 5
+                              </div>
+                              <div class="collapse-content">
+                                <h2 class="font-bold">Question</h2>
+
+                                <h2 class="font-bold">Answer</h2>
+
+                              </div>
+                            </div> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div class="flex justify-end items-center m-10">
+
+
+      <a [routerLink]="['/assessement_question']">
+        <button
+        type="submit"
+        class="block bg-green px-8 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-green-400 border border-transparent rounded-small ml-auto flex">
+
+        Add Assessement
+        </button>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<div></div>
+<!--Sidebar menu button-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  (click)="onShowSidebar()"
+  width="46"
+  height="46"
+  fill="#ffffff"
+  class="bi bi-list cursor-pointer fixed top-2 left-2"
+  viewBox="0 0 16 16"
+>
+  <path
+    fill-rule="evenodd"
+    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+  />
+</svg>
+<!-- side menu button end -->

@@ -1,0 +1,32 @@
+<div class="  flex inline-flex mx-4 my-4"> 
+  <a (click)="back()" ><img class ="" src= "../../../../assets/icons/back.svg" alt=""></a>
+  <label class="mx-10 font-bold">Bookings</label>
+  
+</div>
+
+
+<div *ngIf="bookings.length > 0" class=" mt-8 p-6 flex items-center">   
+  <h2 style="color: #4BC7C1;font-size: large;"><strong>Booked session with therapist</strong></h2>
+</div>
+
+<p *ngIf="bookings.length == 0" class="text-center mt-4">
+  There is no asessments.
+</p>
+
+<div class="m-5 p-6 bg-grey " *ngFor="let booking of bookings let i = index" >
+  <div class="ml-automl-auto flex space-between">
+    <p>{{booking.date}}</p>
+    <p class="ml-auto flex">{{booking.time}}</p>
+  </div>   
+    <div tabindex="3" class="collapse collapse-arrow ">
+      <div class="collapse-title text-xl font-medium">
+       <p class="ml-automl-auto flex space-between">Notes</p>
+      </div>
+      <div class="collapse-content  border-grey">
+        <p>{{booking.notes}}</p>
+      </div>
+    </div>
+  
+  
+</div>
+

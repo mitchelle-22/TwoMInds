@@ -1,0 +1,21 @@
+<div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+
+<div class="flex align-center mt-5 mb-6">
+    <p (click)="back()"><img class ="" src= "../../../../assets/icons/back_arrow.svg" alt=""></p>
+      <div class="text-xl pl-2 mt-[-2px]">
+      Results 
+      </div> 
+</div>
+
+<div class="max-w-full rounded overflow-hidden">
+
+    <div class="px-2 pt-2 pb-2"  *ngFor="let result of listResult" >
+      <div class=" bg-grey rounded px-3 py-1 text-gray-400  mb-2" (click)="run(result)"><span class="font-semibold">Status: </span>{{result.status}}
+        <br>
+      <p class="mt-2 text-gray-700"><span class="font-semibold">Feedback: </span>{{result.feedback}}</p>
+    </div>
+  </div>
+  
+  
+  </div>
+  <!-- <p>ayoba..</p> -->

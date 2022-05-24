@@ -1,0 +1,27 @@
+<div class="m-5 p-6 ">
+    <p class="text-2xl">Avaliable</p>
+    <div *ngFor="let aval of available" class="bg-grey py-4 px-2 flex justify-between align-center mt-2">
+        <p class="py-0 my-0">{{aval}}</p>   
+         <button
+            type="button"
+            class="bg-green p-1 text-white"
+            
+          >
+            book
+          </button>
+    </div>
+
+    <p class="text-2xl mt-5">Booked</p>
+    <div *ngFor="let aval of available" class="bg-grey py-4 px-2 flex justify-between align-center mt-2">
+        <p>08:00am - 09:00 am</p>   
+        <button
+        type="button"
+        class="bg-green p-1 text-white"
+        
+      >
+       Removed
+      </button>
+    </div>
+</div>
+
+<app-user-details></app-user-details>

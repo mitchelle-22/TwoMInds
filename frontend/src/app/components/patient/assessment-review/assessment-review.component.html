@@ -1,0 +1,35 @@
+<div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+
+<div class="flex items-center h-5 mt-5" >
+  <img src="../../../../assets/icons/leftarrow.svg"input type="button" onclick="history.back()">
+  <div class="ml-20 pr-5 text-sm">
+    <label for="remember" class="font-medium text-gray-900 dark:text-gray-300  "><strong>Assessment Review</strong></label>
+  </div>
+  <img src="../../../../assets/icons/rightarrow.svg" class="ml-20" input type="button" [routerLink]="['/result-user']">
+</div>
+
+  <div class="card w-full px-2 bg-base-100 shadow-xl mt-10">
+    <div class="card-body px-2 bg-teal" *ngIf="assessment">
+     <div tabindex="3"  *ngFor="let t of  [0,1,2,3]" class="collapse collapse-arrow">
+      <div class="collapse-title text-xl font-medium">
+        Assessment {{t + 1}}
+      </div>
+      <div class="collapse-content border-t-2 border-grey">
+        <h2 class="font-bold">Question</h2>
+        <p> {{question[t]}}</p>
+
+        <h2 class="font-bold mt-2">Answer</h2>
+        <p> {{answer[t]}}</p>
+        <p></p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+  <button [routerLink]="['/home-page']" type="submit" class="block bg-green ml-2 px-8 py-2 mt-14 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-green-400 border border-transparent rounded-small">Home</button>
+
+
+
+
+
+

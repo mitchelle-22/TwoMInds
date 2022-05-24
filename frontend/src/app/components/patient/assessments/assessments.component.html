@@ -1,0 +1,54 @@
+
+
+<div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+<div  *ngIf="!isLoading" class="flex flex-col justify-between ">
+  <div class="flex align-center mt-5 mb-6">
+    <p (click)="back()"><img class ="" src= "../../../../assets/icons/back_arrow.svg" alt=""></p>
+      <div class="text-xl pl-2 mt-[-2px]">
+        Assessment
+      </div> 
+ </div>
+
+  <p *ngIf="!questionAvailable" class="text-center mt-4">
+    There is no asessments.
+  </p>
+  
+  <div  *ngIf="questionAvailable" class="flex flex-col justify-between">
+  <div  class="py-4">
+      <img class="mx-auto" src='{{image[questionNumber]}}'
+      alt="">
+
+    </div>
+
+
+    <div  class="py-4 pr-10 pl-10 text-center">
+      <!-- <div class="loader mx-auto"></div> -->
+     {{question[questionNumber]}}
+    </div>
+
+    <div class="px-4  inline-flex justify-between ">
+      <button
+        type="button"
+        class="bg-green p-2 mb-7 text-white px-2 m-10 w-full"
+       (click)="nextQuestion()"
+      >
+      NO
+      </button>
+
+      <button
+      type="button"
+      class="bg-green p-2 mb-7 text-white px-2 m-10 w-full"
+      (click)="moreAboutQuestions()"
+    >
+
+      YES
+    </button>
+
+    </div>
+
+  </div>
+  
+</div>
+
+
+

@@ -1,0 +1,55 @@
+
+<div class="min-h-screen flex items-center justify-center">
+  
+  <div  *ngIf="isLoading" class="loader flex justify-center items-center "></div>
+  <!--
+    End of it
+  -->
+  <form [formGroup]="loginForm" class="my-auto">
+  <p class="text-2xl mt-4 font-bold">Sign In</p>
+  <p class="text-red-500 mt-2 mb-[-1rem]">{{errorMessage}}</p>
+
+  <div class="flex items-center mt-12 border-b border-teal-500 py-0">
+    <img src="../../../../assets/icons/email.svg" alt="" />
+    <input
+      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+      type="text"
+      placeholder="Email"
+      formControlName="email"
+    />
+  </div>
+
+  <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-red-500">
+    <small *ngIf="email?.errors?.['required']"> *Email is required</small>
+    <small *ngIf="email?.errors?.['email']"> *Invalid email</small>
+  </div>
+
+  <!--password-->
+  <div class="flex items-center mt-12 border-b border-teal-500 py-0">
+    <img src="../../../../assets/icons/password.svg" alt="" />
+    <input
+      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+  </div>
+  <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-red-500">
+    <small *ngIf="password?.errors?.['required']"> *Password is required</small>
+  </div>
+
+  <!--sign in-->
+  <!--sign up-->
+  <button
+    class="block bg-green mx-auto px-8 py-2 mt-14 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-green-400 border border-transparent rounded-small"
+    (click)="login()"
+    [disabled]="!loginForm.valid"
+    [ngClass]="loginForm.valid ? 'bg-green' : 'bg-disabledGreen' "
+  >
+    Sign In
+  </button>
+
+  <p class="text-center mt-10 ">Don’t have an acccout? <a class="text-green" routerLink="/signup">Sign Up</a>
+  </p>
+</form>
+</div>

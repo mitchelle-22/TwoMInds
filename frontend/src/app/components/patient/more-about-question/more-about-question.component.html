@@ -1,0 +1,56 @@
+
+<div class="flex justify-between flex-col">
+
+    
+    <div class="mx-4 my-4"> 
+       <a (click)="back()" ><img class ="" src= "../../../../assets/icons/back.svg" alt=""></a>
+       
+    </div>
+    <div class="py-4">
+      
+      <img class ="mx-auto" src= "../../../../assets/icons/moreAboutQuestion.svg" alt="">
+    </div>
+    
+    <p class="py-4 pr-10 pl-10 mx-auto text-center">
+      How do you feel after answering  the previous question?
+    </p>
+    <div class= "justify-center  mx-auto mt-6" [formGroup]="ratingForm">
+        <input type="radio" class="myInput " id="contactChoice1"
+        formControlName="contact"
+         name="contact" value="Much Worse" checked>
+        <label  for="contactChoice1"> Much Worse </label>
+  
+        <div class="mt-2">
+            <input type="radio" class="myInput" id="contactChoice2"
+            formControlName="contact"
+         name="contact" value="About The Same">
+        <label for="contactChoice2"> About The Same </label>
+        </div>
+
+        <div class="mt-2">
+            <input type="radio" class="myInput" id="contactChoice2"
+            formControlName="contact"
+         name="contact" value="Much Better">
+        <label for="contactChoice2"> Much Better </label>
+        </div>
+  
+      </div>
+    
+    <div class="py-4 justify-center flex">
+      <button
+        type="button"
+        class="bg-green p-2 mb-7 px-7 text-white px-2 m-10" 
+       (click)="nextQuestion()"
+      >
+      Next
+      </button>
+
+
+      
+    </div>
+
+    
+</div>
+
+  
+  

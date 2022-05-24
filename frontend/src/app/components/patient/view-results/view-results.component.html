@@ -1,0 +1,34 @@
+<div class="flex items-center h-5 mt-5 p-6 ">
+    <a (click)="back()" ><img class ="" src= "../../../../assets/icons/back_arrow.svg" alt=""></a>
+      <div class="ml-20 pr-5 text-sm">
+        <label for="results" class="font-medium text-gray-900 dark:text-gray-300  "><strong>View Results</strong></label>
+      </div> 
+</div>
+<div class=" mt-8 p-6 flex">
+    <p style="color: #4BC7C1;"><strong>Results</strong> </p>
+    <img src="assets/icons/download-results.svg" (click)="print()" class="ml-auto flex" alt="">   
+
+</div>
+<div class="mt-4 p-6" >
+    <p class="pb-2"><strong>Patient: </strong>{{user.email}}</p>
+    <!-- <p class="pb-2"><strong>Provider: </strong>... </p> -->
+    <!-- <p class="pb-2"><strong>Assessment Taken: </strong>{{result.assessmentTaken}}</p> -->
+    <p><strong>Assessment Completed: </strong>... </p>
+    
+   
+    
+</div>
+<div>
+
+    <div class="flex p-6">
+        <p class=" "><strong>{{result1.status}}</strong></p>
+        <p class="ml-auto flex "><strong>{{result1.rate}}%</strong></p>
+    </div>
+
+<div class=" p-6">
+    <p class=" "><strong>Feedback </strong></p>
+    <p class="pt-2 " >{{result1.feedback}} </p>
+</div>
+</div>
+  
+    

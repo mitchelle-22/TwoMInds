@@ -1,0 +1,30 @@
+.calendar-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  max-width: 450px;
+  margin-bottom: 1rem;
+  background-color: #fff;
+}
+
+.calendar-table td,
+.calendar-table th {
+ padding: 2px;
+  text-align: center;
+  border: 2px solid white;
+}
+
+.calendar-day {
+  cursor: pointer;
+}
+
+.blue-date {
+  color: rgb(16, 110, 190);
+}
+
+.day-bg{
+    background-color: #4BC7C1;
+    border-radius: 50%;
+    padding: 5px;
+}
+

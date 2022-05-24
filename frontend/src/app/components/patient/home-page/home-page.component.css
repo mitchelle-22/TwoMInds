@@ -1,0 +1,19 @@
+.banner
+{
+  background-image:
+  url(./../../../../assets/icons/bunner.svg);
+  height: 203px;
+  width: 375;
+
+  text-align:start;
+  color: #FFFF;
+}
+
+
+.grid
+{
+  margin-top: -20;
+}
+
+
+
